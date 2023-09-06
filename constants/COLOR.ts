@@ -1,0 +1,16 @@
+export const COLOR = {
+  PRIMARY: '#7A4DFF',
+  SECONDARY: '#16C1AF',
+  THIRDARY: '#408DF7',
+  BLACK: '#000000',
+  WHITE: '#ffffff',
+  ACCENT: '#F5441B',
+  ERROR: '#CB2B2B',
+  GRAY: '#8F92A5',
+  LIGHT_GRAY: '#C3C6DC',
+  PALE_GRAY: '#E5E7ED',
+  MIDDLE_GRAY: '#B6B7BE',
+  BRIGHT_GRAY: '#CBCCD5',
+  LIGHT_VIOLET: '#D2BFFE',
+  VIOLET: '#9F7EF5',
+} as const;
