@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import ButtonHeader from '../header/ButtonHeader';
 import Screen from '../layouts/Screen';
-import { H2, H4 } from '../typography/Headline';
 import { Button } from './Button';
 import { Checkbox } from './CheckBox';
 import MarginBox from '../layouts/MarginBox';
 import { Radio } from './Radio';
 import { SwitchButton } from './Toggle';
 import PaddingBox from '../layouts/PaddingBox';
+import Headline from '../typography/Headline';
 
 export default function ButtonView() {
   const [isOn, setIsOn] = useState(false);
   return (
-    <Screen>
-      <ButtonHeader />
-      <H2 m={'10px 15px'}>Buttons</H2>
+    <Screen topItem={<ButtonHeader />}>
+      <Headline name={'H2'} m={'10px 15px'} text={'Button'} />
       <Button label={'full widht button'} fontWeight={500} marginBottom={15} />
       <Button
         label={'inactive button'}
@@ -61,7 +60,7 @@ export default function ButtonView() {
       />
       <Button
         width={120}
-        height={20}
+        height={30} //최소 높이
         borderRadiusRound
         label={'custom button'}
         fontWeight={300}
@@ -71,7 +70,8 @@ export default function ButtonView() {
         fontSize={13}
         marginBottom={15}
       />
-      <H4 p={'20px 15px 15px 15px'}>Check Box</H4>
+      <Headline name={'H4'} m={'10px 15px'} text={'Checkbox'} />
+
       <MarginBox margin={'0 15px'}>
         <Checkbox checked={isOn} handleChecked={() => setIsOn(!isOn)} />
         <MarginBox margin={'5px 0'} />
@@ -90,11 +90,13 @@ export default function ButtonView() {
           disabled
         />
       </MarginBox>
-      <H4 p={'20px 15px 15px 15px'}>Radio</H4>
+
+      <Headline name={'H4'} m={'10px 15px'} text={'Radio'} />
+
       <MarginBox margin={'0 15px'}>
         <Radio checked={isOn} handleChecked={() => setIsOn(!isOn)} />
       </MarginBox>
-      <H4 p={'20px 15px 15px 15px'}>Toggle</H4>
+      <Headline name={'H4'} m={'10px 15px'} text={'SwitchButton'} />
       <MarginBox margin={'0 15px'}>
         <SwitchButton isEnabled={isOn} setIsEnabled={() => setIsOn(!isOn)} />
         <PaddingBox padding={'20px'} />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
+import RadioOn from '../../assets/images/icon/radio-on.svg';
+import RadioOff from '../../assets/images/icon/radio-off.svg';
 
 type ComponentProps = {
   style?: StyleProp<ViewStyle>;
@@ -8,29 +10,12 @@ type ComponentProps = {
   handleChecked: (checked: boolean) => void;
 };
 
-const RadioContainer = styled.TouchableOpacity`
-  position: relative;
-  width: 22px;
-  height: 22px;
-`;
-
-const RadioImage = styled.Image`
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-`;
+const RadioContainer = styled.TouchableOpacity``;
 
 export const Radio = ({ style, checked, handleChecked }: ComponentProps) => {
   return (
     <RadioContainer style={style} onPress={() => handleChecked(!checked)}>
-      <RadioImage
-        source={
-          checked
-            ? require('/assets/images/icon/radio-on.svg')
-            : require('/assets/images/icon/radio-off.svg')
-        }
-      />
+      {checked ? <RadioOn /> : <RadioOff />}
     </RadioContainer>
   );
 };

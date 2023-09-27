@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { COLOR } from '../../constants/COLOR';
 import { RADIUS } from '../../constants/RADIUS';
+import { StyleProp, ViewStyle } from 'react-native';
+// import { StyleProp, TouchableOpacity } from 'react-native';
 
 export const ButtonVariant = Object.freeze({
   Default: 'default',
@@ -153,10 +155,10 @@ export const ButtonTheme = {
 type FlexDirectionProperty = 'row' | 'column';
 
 type ButtonProps = {
+  style?: StyleProp<ViewStyle>;
   label: string;
   children?: React.ReactNode | string;
   onPress?: () => void;
-
   fontSize?: number;
   fontWeight?: number;
   marginRight?: number;
@@ -329,10 +331,12 @@ export const Button = ({
   textBtn,
   text,
   flexDirection = 'row',
+  style,
   ...props
 }: ButtonProps) => {
   return (
     <Component
+      style={style}
       activeOpacity={0.8}
       onPress={onPress}
       variant={variant}

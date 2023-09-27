@@ -8,6 +8,7 @@ import LayoutsView from '../components/layouts/LayoutsView';
 import TypographyView from '../components/typography/TypographyView';
 import HeaderView from '../components/header/HeaderView';
 import AvatarView from '../components/avatar/AvatarView';
+import FormView from '../components/form/FormView';
 
 export type MainNavigatorRouteParams = {
   '/Home': undefined;
@@ -16,6 +17,7 @@ export type MainNavigatorRouteParams = {
   '/components/typography': undefined;
   '/components/avatar': undefined;
   '/components/header': undefined;
+  '/components/form': undefined;
 };
 
 export type MainNavigationProp = NativeStackNavigationProp<
@@ -38,6 +40,7 @@ function MainNavigator() {
       <Stack.Screen name="/components/typography" component={TypographyView} />
       <Stack.Screen name="/components/avatar" component={AvatarView} />
       <Stack.Screen name="/components/header" component={HeaderView} />
+      <Stack.Screen name="/components/form" component={FormView} />
     </Stack.Navigator>
   );
 }

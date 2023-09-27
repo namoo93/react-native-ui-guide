@@ -3,6 +3,7 @@ export const COLOR = {
   SECONDARY: '#16C1AF',
   THIRDARY: '#408DF7',
   BLACK: '#000000',
+  DARK_BLUE_GRAY: '#42444C',
   WHITE: '#ffffff',
   ACCENT: '#F5441B',
   ERROR: '#CB2B2B',

@@ -1,42 +1,54 @@
 import styled from 'styled-components/native';
 import { COLOR } from '../../constants/COLOR';
 
-import Profile from '../../assets/images/icon/check-on.svg';
-
 interface Props {
-  size?: number;
-  iconSize?: number;
-  src?: string;
+  size?: number | any;
+  src: string;
+  radius?: number;
 }
 
-const IcContainer = styled.View<{ size?: number }>`
+const IcContainer = styled.View<{ size?: number; radius?: number }>`
   ${({ size }) => (size ? `height: ${size}px; width: ${size}px;` : '')};
   background: ${COLOR.VIOLET};
+  ${({ radius }) =>
+    radius ? `  border-radius: ${radius};` : `  border-radius: 10;`}
+  border-width: 1;
+  border-color: ${COLOR.PALE_GRAY};
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 `;
 
-const Img = styled.Image<{ iconSize?: number }>`
-  ${({ iconSize }) =>
-    iconSize
-      ? `height: ${iconSize}px; width: ${iconSize}px;`
-      : 'height: inherit; width: inherit;'};
+const IconImg = styled.Image`
+  width: 65;
+  height: 88;
+  transform: scale(0.4);
 `;
 
-export const Avatar = ({ size = 44 }: Props) => {
+const Img = styled.Image`
+  background-size: cover;
+  width: inherit;
+  height: inherit;
+`;
+
+export default function Avatar({ size = 44, src = '', radius }: Props) {
   // if (!!src && !src?.includes('?')) {
   //   src += `?w=${size * 2}&h=${size * 2}`;
   // }
   return (
     <>
-      {/* {!src?.length ? ( // || src === 'private' */}
-      {/* <IcContainer size={size}>
-        <Profile width={160} height={60} />
-      </IcContainer> */}
-      {/* // ) : ( */}
-      <Img
-        size={size}
-        source={require('/assets/images/icon/check-disabled.svg')}
-      />
-      {/* )}  */}
+      {src !== '' ? ( // || src === 'private'
+        <IcContainer size={size} radius={radius}>
+          <Img source={{ uri: src }} alt="avatar image" />
+        </IcContainer>
+      ) : (
+        <IcContainer size={size} radius={radius}>
+          <IconImg
+            source={require('../../assets/images/anychat-icon.png')}
+            alt="avatar icon"
+          />
+        </IcContainer>
+      )}
     </>
   );
-};
+}

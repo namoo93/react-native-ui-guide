@@ -1,6 +1,13 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
+//svg
+import CheckOn from '../../assets/images/icon/check-on.svg';
+import CheckOff from '../../assets/images/icon/check-off.svg';
+import CheckRoundOn from '../../assets/images/icon/check-round-on.svg';
+import CheckRoundOff from '../../assets/images/icon/check-round-off.svg';
+import CheckDisabled from '../../assets/images/icon/check-disabled.svg';
+import CheckRoundDisabled from '../../assets/images/icon/check-round-disabled.svg';
 
 type ComponentProps = {
   style?: StyleProp<ViewStyle>;
@@ -10,28 +17,9 @@ type ComponentProps = {
   disabled?: boolean;
 };
 
-type CheckBoxImageProps = {
-  round?: boolean;
-};
-
 const CheckBoxContainer = styled.TouchableOpacity`
-  position: relative;
   width: 22px;
   height: 22px;
-`;
-
-const CheckBoxImage = styled.Image<CheckBoxImageProps>`
-  ${({ round }) => (!round ? 'display: flex;' : 'display: none;')}
-  position: absolute;
-  width: 100%;
-  height: 100%;
-`;
-
-const CheckBoxRoundImage = styled.Image<CheckBoxImageProps>`
-  ${({ round }) => (round ? 'display: flex;' : 'display: none;')}
-  position: absolute;
-  width: 100%;
-  height: 100%;
 `;
 
 export const Checkbox = ({
@@ -49,36 +37,14 @@ export const Checkbox = ({
     >
       {!disabled && (
         <>
-          <CheckBoxImage
-            round={round}
-            source={
-              checked
-                ? require('/assets/images/icon/check-on.svg')
-                : require('/assets/images/icon/check-off.svg')
-            }
-          />
-          <CheckBoxRoundImage
-            round={round}
-            source={
-              checked
-                ? require('/assets/images/icon/check-round-on.svg')
-                : require('/assets/images/icon/check-round-off.svg')
-            }
-          />
+          {round ? (
+            <>{checked ? <CheckOn /> : <CheckOff />}</>
+          ) : (
+            <>{checked ? <CheckRoundOn /> : <CheckRoundOff />}</>
+          )}
         </>
       )}
-      {disabled && (
-        <>
-          <CheckBoxImage
-            round={round}
-            source={require('/assets/images/icon/check-disabled.svg')}
-          />
-          <CheckBoxRoundImage
-            round={round}
-            source={require('/assets/images/icon/check-round-disabled.svg')}
-          />
-        </>
-      )}
+      {disabled && <>{round ? <CheckDisabled /> : <CheckRoundDisabled />}</>}
     </CheckBoxContainer>
   );
 };
